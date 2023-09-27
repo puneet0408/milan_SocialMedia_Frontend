@@ -1,0 +1,92 @@
+@import "../../../mixins.scss";
+.postBoxContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 1;
+    visibility: visible;
+    z-index: 9;
+    .opacityLayer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(83, 73, 73, 0.25);
+      backdrop-filter: blur(6.5px);
+      -webkit-backdrop-filter: blur(6.5px);
+      opacity: 1;
+      transition: opacity 600ms;
+    }
+  .postbox {
+    position: fixed;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-color: white;
+     transform: scale(1);
+    transition: transform 250ms;
+    @include sm {
+      width: 70%;
+    }
+    @include md {
+      width: 50%;
+    }
+  }
+    .closeBtn {
+    position: absolute;
+    right: 0;
+    padding: 0.5rem;
+    background-color: var(--pink);
+    color: #fff;
+    cursor: pointer;
+  }
+  .postdetails{
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    .accountdetails{
+        padding: .5rem;
+        width: 35%;
+         margin: 1rem;
+         align-items: center;
+         gap: 1rem;
+         box-shadow:
+         inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+         0 0 0 2px rgb(209, 199, 199),
+         0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+     
+        display: flex;
+        flex-direction: row;
+        .photo{
+            width: 50px;
+            height: 50px;
+            border: 1px solid black;
+            border-radius: 50px;
+        }
+    }
+      .textarea{
+        height: 100px;
+        resize: none;
+         border: none;
+        }
+        .imageLabel{
+            margin: 1rem;
+        }
+
+        button{
+            position:fixed;
+            bottom: 20px;
+            right: 0;
+            padding: .5rem;
+            color: #fff;
+            border: none;
+            background-color: var(--pink);
+
+        }
+  }
+}

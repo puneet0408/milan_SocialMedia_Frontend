@@ -1,0 +1,67 @@
+.sideBar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgb(7,7,7);
+  color: white;
+  height: 700px;
+  position: fixed;
+  border-right: white;
+
+  .searchbarcontainer{
+    padding-top:3rem ;
+    position: absolute;
+    top: 0;
+    left:100%;
+    height: 700px;
+    background-color: rgb(7, 7, 7);
+.searchBar{
+  margin: 1.3rem 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center; background-color: #252222;
+  input{
+  color: #fff;
+  padding: 1rem;
+    background: none;
+    border: none;
+  }
+}
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-style: italic;
+    .handShake {
+      font-size: 2rem;
+      color: rgb(32, 200, 230);
+    }
+  }
+  .menuitems {
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    .menuitem {
+      padding: 1rem 2rem ;
+      font-style: bold;
+      font-size: 1.4rem;
+      align-items: center;
+      border-radius: 1rem;
+
+      .profilePic{
+        border: 1px solid black;
+        width: 20%;
+        height: 100%;
+      }
+    }
+    :hover {
+      background-color: #1b060631;
+    }
+  }
+}

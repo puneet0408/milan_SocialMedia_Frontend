@@ -1,0 +1,34 @@
+@import "../../../mixins.scss";
+.main {
+  flex: 2;
+  display: flex;
+  justify-content: end;
+
+  .postcontainer {
+    margin-top: 4rem;
+    width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 100px;
+   
+    box-shadow:
+    inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+    0 0 0 2px rgb(209, 199, 199),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+    .photo {
+      width: 50px;
+      height: 50px;
+      border: 1px solid black;
+      border-radius: 50px;
+    }
+    .addPost {
+      width: 500px;
+      border: 1px solid black;
+      border-radius: 2rem;
+      text-align: start;
+      padding: 1rem;
+      //background-color: rgb(233, 228, 221);
+    }
+  }
+}
