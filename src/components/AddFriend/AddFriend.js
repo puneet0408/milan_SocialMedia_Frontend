@@ -1,10 +1,12 @@
-import React from 'react';
+import React from "react";
 import "./Addfriend.scss";
+import { useSelector } from "react-redux/es/hooks/useSelector";
 
 function AddFriend() {
-  return (
-    <div className='friend' >AddFriend</div>
-  )
+  const { profile } = useSelector((state) => state.user);
+  console.log(profile);
+
+  return <div className="friend">{profile?.name}</div>;
 }
 
-export default AddFriend
+export default AddFriend;

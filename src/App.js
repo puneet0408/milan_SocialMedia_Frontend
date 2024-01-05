@@ -1,24 +1,22 @@
 import React from "react";
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Route,
-  Outlet,
-  Navigate,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Message from "./pages/Message/Message";
 import Profile from "./pages/Profile/profile";
 import Login from "./pages/Registeration/Login/Login";
 import Register from "./pages/Registeration/Register/Register";
-
+import { useSelector } from "react-redux";
 import Sidebar from "./components/Sidebar/Sidebar";
+import { Navigate } from "react-router-dom";
+import Header from "./components/Header/header";
 import "./App.scss";
 function App() {
   const Layout = () => {
     return (
       <div>
+        <Header/>
         <Sidebar />
+     
         <div>
           <Outlet />
         </div>
@@ -26,17 +24,23 @@ function App() {
     );
   };
 
-  // const ProtectedRoute = ({ children }) => {
-  //   if (!currentUser) {
-  //     return <Navigate to="/login" />;
-  //   }
+  const { user } = useSelector((state) => state.user);
 
-  //   return children;
-  // };
+  const ProtectedRoute = ({ children }) => {
+    if (!user) {
+      return <Navigate to="/login" />;
+    }
+
+    return children;
+  };
 
   const router = createBrowserRouter([
     {
-      element: <Layout />,
+      element: (
+        <ProtectedRoute>
+          <Layout />
+        </ProtectedRoute>
+      ),
       children: [
         {
           path: "/",

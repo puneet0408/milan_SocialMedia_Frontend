@@ -1,16 +1,20 @@
 import React, { useState } from "react";
 import { LiaHandshake } from "react-icons/lia";
-import {
-  AiFillHome,
-  AiFillMessage,
-  AiOutlineLogout,
-} from "react-icons/ai";
+import { useSelector } from "react-redux";
+import avtar from "../../assets/avatar.png";
+import { AiFillHome, AiFillMessage, AiOutlineLogout } from "react-icons/ai";
 import { HiOutlineSearch } from "react-icons/hi";
 import "./Sidebar.scss";
 
 import { useNavigate } from "react-router";
+import { Logout } from "../../store/UserSlice";
+ import { useDispatch } from "react-redux";
 
 function Sidebar() {
+  
+  const dispatch = useDispatch();
+
+  const { profile } = useSelector((state) => state.user);
   const [query, setQuery] = useState("");
   const [showSearch, setShowSearch] = useState(false);
   const navigate = useNavigate();
@@ -19,9 +23,20 @@ function Sidebar() {
     setShowSearch(false);
     navigate("/");
   };
+
+  const navigateToProfile = ()=>{
+    setShowSearch(false);
+    navigate("/profile");
+  }
+
   const openSearch = () => {
     setShowSearch(true);
   };
+
+  const logoutbtn = () => {
+    dispatch(Logout());
+  };
+
   return (
     <section className="sideBar">
       {showSearch && (
@@ -54,10 +69,16 @@ function Sidebar() {
           <HiOutlineSearch /> {showSearch ? "" : "Search"}
         </li>
         <li className="menuitem">
-          <span className="profilePic"></span> {showSearch ? "" : "Profile"}
+          <div className="profileContainer" onClick={navigateToProfile}>
+            <img
+              src={profile?.profilePic ? profile?.profilePic : avtar}
+              alt="Profile"
+            />
+          </div>
+          {showSearch ? "" : "Profile"}
         </li>
       </nav>
-      <div>
+      <div onClick={logoutbtn}>
         <AiOutlineLogout /> {showSearch ? "" : "Logout"}
       </div>
     </section>

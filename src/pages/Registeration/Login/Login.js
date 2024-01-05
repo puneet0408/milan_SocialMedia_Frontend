@@ -1,11 +1,17 @@
-import React, { useState , useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../Registeration.scss";
+import { SignupLogin } from "../../../Api/Api";
+import { LoginFun, profileFun } from "../../../store/UserSlice";
+
+import { useDispatch } from "react-redux";
 function Login() {
   const initialState = {
     email: "",
     password: "",
   };
+
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [formData, setformData] = useState(initialState);
   const [formError, setformError] = useState(initialState);
@@ -23,7 +29,19 @@ function Login() {
 
   useEffect(() => {
     if (Object.keys(formError).length === 0 && isSubmit) {
-      navigate("/home");
+      SignupLogin("/auth/login", formData)
+        .then((res) => {
+          const { token, user } = res.data;
+          console.log(user);
+          if (token) {
+            localStorage.setItem("token", token);
+            dispatch(LoginFun(user));
+            navigate("/");
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
   });
 
@@ -31,15 +49,12 @@ function Login() {
     const error = {};
     const regex =
       /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    const passwordRegex = /^(?=.*[a-zA-Z]).{8,}$/;
     if (!value.email) {
       error.email = "email.required";
     } else if (!regex.test(value.email)) {
       error.email = "this is not a valid format";
     } else if (!value.password) {
       error.password = "password is required";
-    } else if (!passwordRegex.test(value.password)) {
-      error.password = "min-len of 8 char and atleast one letter";
     }
     return error;
   };
@@ -78,11 +93,14 @@ function Login() {
             <button>Submit</button>
           </form>
           <p className="line"></p>
-        <p className="account" >
-          have an account <span className="switch" onClick={()=>navigate("/register")} >  Register</span>
-        </p>
+          <p className="account">
+            have an account{" "}
+            <span className="switch" onClick={() => navigate("/register")}>
+              {" "}
+              Register
+            </span>
+          </p>
         </section>
-     
       </div>
     </div>
   );

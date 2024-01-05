@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import "../Registeration.scss";
 import { useNavigate } from "react-router-dom";
+import { SignupLogin } from "../../../Api/Api";
 
 function Register() {
   const initialState = {
@@ -14,6 +15,8 @@ function Register() {
   const [formData, setFormData] = useState(initialState);
   const [formError, setFormerror] = useState(initialState);
   const [isSubmit, setisSubmit] = useState(false);
+  const [commingError, setCommingError] = useState("");
+  const [btntext , setbtnText] = useState("Submit")
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,16 +24,27 @@ function Register() {
     setFormerror(validate({ ...formData, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+ 
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setbtnText("submitting.....");
     setisSubmit(true);
-  };
-
-  useEffect(() => {
-    if (Object.keys(formError).length === 0 && isSubmit) {
-      navigate("/login");
+  
+    try {
+      const res = await SignupLogin("/Auth/signup", formData);
+      console.log(res);
+      if (res.status === 200) {
+        setbtnText("submitted");
+        navigate("/login");
+      } else {
+        setbtnText("some error");
+        setCommingError("signup failed");
+      }
+    } catch (error) {
+      setCommingError(error.response.data);
     }
-  });
+  };
+  
 
   const validate = (value) => {
     const error = {};
@@ -63,7 +77,7 @@ function Register() {
         <section className="formContainer">
           <h1>Milan</h1>
           <p> Sign up to see photos from your friends</p>
-          <p className="line" ></p>
+          <p className="line"></p>
           <form className="form" onSubmit={handleSubmit}>
             <input
               type="email"
@@ -101,14 +115,17 @@ function Register() {
                 {formError.password}
               </p>
             )}
-            <button>Submit</button>
+            {commingError && <p style={{color:"red"}} >{commingError}</p>}
+            <button>{btntext}</button>
           </form>
-          <p className="line" ></p>
-        <p className="account" >
-        have an account <span className="switch" onClick={()=>navigate("/login")} >Login</span>
-        </p>
+          <p className="line"></p>
+          <p className="account">
+            have an account{" "}
+            <span className="switch" onClick={() => navigate("/login")}>
+              Login
+            </span>
+          </p>
         </section>
-     
       </div>
     </div>
   );

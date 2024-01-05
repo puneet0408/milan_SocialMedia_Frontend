@@ -1,14 +1,15 @@
-import { CreateSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
-const FeedCollections = CreateSlice({
-  name: "feeds",
+const FeedCollection = createSlice({
+  name: "Feeds",
   initialState: {
     feeds: [],
+    likes:"",
     loading: false,
     error: null,
   },
   reducers: {
-    getfeeds: (state, action) => {
+    getFeeds: (state, action) => {
       state.feeds = action.payload;
     },
     loadingState: (state, action) => {
@@ -17,5 +18,5 @@ const FeedCollections = CreateSlice({
   },
 });
 
-export const { getfeeds, loadingState } = FeedCollections.actions;
-export default FeedCollections.reducer;
+export const { getFeeds, loadingState } = FeedCollection.actions;
+export default FeedCollection.reducer;
