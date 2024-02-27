@@ -78,7 +78,7 @@ function Feed() {
           />
         </div>
         <p className="addPost" onClick={() => setPostBox(true)}>
-          start a post
+          Express your thoughts.....
         </p>
         
       </section>

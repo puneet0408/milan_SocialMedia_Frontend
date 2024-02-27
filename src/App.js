@@ -6,7 +6,7 @@ import Profile from "./pages/Profile/profile";
 import Login from "./pages/Registeration/Login/Login";
 import Register from "./pages/Registeration/Register/Register";
 import { useSelector } from "react-redux";
-import Sidebar from "./components/Sidebar/Sidebar";
+// import Sidebar from "./components/Sidebar/Sidebar";
 import { Navigate } from "react-router-dom";
 import Header from "./components/Header/header";
 import "./App.scss";
@@ -15,8 +15,6 @@ function App() {
     return (
       <div>
         <Header/>
-        <Sidebar />
-     
         <div>
           <Outlet />
         </div>

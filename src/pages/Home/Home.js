@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
-import AddFriend from "../../components/AddFriend/AddFriend";
+import RightSide from "../../components/RightSide/Rightside";
 import Feed from "../../components/Feed/Feed";
 import "./Home.scss";
 import { useDispatch, useSelector } from "react-redux";
+import Sidebar from "../../components/Sidebar/Sidebar";
 import { profileFun } from "../../store/UserSlice";
 import { getuserdetails } from "../../Api/Api";
 import { fetchDetailsFromApi } from "../../Api/Api";
@@ -45,11 +46,14 @@ function Home() {
 
   return (
     <section className="HomePage">
-      <div>
+      <div className="left">
+        <Sidebar/>
+      </div>
+      <div className="center">
         <Feed />
       </div>
-      <div>
-        <AddFriend />
+      <div className="right">
+      <RightSide/>
       </div>
     </section>
   );

@@ -27,7 +27,7 @@
     flex-direction: row;
     width: auto;
     height: 40%;
-    background-color: white;
+    background-color: #252b2e;
     transform: scale(1);
     transition: transform 250ms;
     @include sm {
@@ -66,6 +66,7 @@
       border-left: 1px solid black;
       padding-left: 1rem;
       .profile {
+        color: #fff;
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -84,6 +85,7 @@
         }
       }
       .comments {
+        color: #fff;
         font-size: 15px;
         height: 310px;
         overflow-y: auto;
@@ -92,8 +94,9 @@
         .singleComment {
           margin-bottom: 15px;
           padding: 10px;
-          border: 1px solid #ddd;
+          background-color: #202426;
           border-radius: 8px;
+          box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
           .name {
             font-weight: bolder;
             margin-right: 5px;
@@ -113,6 +116,7 @@
         }
       }
       .icons {
+        color: #fff;
         display: flex;
         align-items: center;
         font-size: 1rem;
@@ -120,21 +124,25 @@
         margin: 1rem;
       }
       .commentInput {
+
         margin: 0.5rem;
         display: flex;
         justify-content: space-between;
 
         input {
           width: 90%;
+          border-radius: 1rem;
           border: none;
           padding: 0.5rem;
         }
 
         button {
-          padding: 0.4rem;
+          padding: 0.3rem;
+          margin-left: .3rem;
+          border-radius: .5rem;
           border: none;
           color: #fff;
-          background-color: rgb(58, 58, 219);
+          background-color: var(--pink);
         }
       }
     }

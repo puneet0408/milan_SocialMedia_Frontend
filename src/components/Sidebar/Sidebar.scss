@@ -1,74 +1,73 @@
 .sideBar {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  background-color: rgb(7,7,7);
-  color: white;
-  height:100%;
-  position: fixed;
-  border-right: white;
+  position: sticky;
+    top: 64px;
+  perspective: 1000px;
 
-  .searchbarcontainer{
-    padding-top:3rem ;
-    position: absolute;
-    top: 0;
-    left:100%;
-    height: 700px;
-    background-color: rgb(7, 7, 7);
-.searchBar{
-  margin: 1.3rem 1rem;
-  display: flex;
-  flex-direction: row;
-  align-items: center; background-color: #252222;
-  input{
-  color: #fff;
-  padding: 1rem;
-    background: none;
-    border: none;
-  }
-}
-  }
-
-  .logo {
-    display: flex;
-    align-items: center;
-    font-size: 1.5rem;
-    font-style: italic;
-    .handShake {
-      font-size: 2rem;
-      color: rgb(32, 200, 230);
-    }
-  }
   .menuitems {
-    display: flex;
-    flex-direction: column;
-    height: 50%;
-    align-items: center;
-    justify-content: space-between;
-    list-style: none;
+    color: #fff;
+    width: 240px;
+    height: 400px;
+    position: relative;
+    background-color: #fff;
+    text-align: center;
+    padding-bottom: 25px;
+    border-radius: 10px;
+    background-color: #252b2e;
+    transform-style: preserve-3d; 
+
     .menuitem {
-      padding: 1rem 2rem ;
-      font-style: bold;
-      font-size: 1.4rem;
       display: flex;
       align-items: center;
-      border-radius: 1rem;
-      flex-direction: row;
+      padding: 20px 30px;
+      cursor: pointer;
+      margin: 1rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+      .icon {
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .text {
+        margin-left: 15px;
+        font-size: 20px;
+      }
+
+      &:hover {
+        background-color: #1b060631;
+        transform: translateZ(15px) rotateX(5deg); 
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.3); 
+      }
 
       .profileContainer {
-        width: 2rem;
-        height: 2rem;
+        width: 1.5rem;
         border-radius: 50%;
-        margin-right: .3rem;
+
         img {
           width: 100%;
+          height: 100%;
           border-radius: 50%;
         }
       }
     }
-    :hover {
-      background-color: #1b060631;
+
+    .quote {
+      color: #fff;
+      letter-spacing: 1px;
+      line-height: 1.4;
+      text-align: center;
+      font-size: 18px;
+      padding: 1rem 0;
+      font-family: sans-serif;
+      background-color: var(--pink);
+      transform: translateZ(15px); /* Apply 3D transform to quote */
+    }
+
+    
+    .menuitem + .menuitem {
+      margin-top: 0.5rem; /* Adjust the margin as needed */
     }
   }
 }

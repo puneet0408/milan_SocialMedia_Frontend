@@ -1,0 +1,25 @@
+.Rightside{
+  position: sticky;
+  top: 64px;
+  .gotoprofile {
+    width: 300px;
+    height: 300px;
+    border-radius: 2rem;
+    background-color: #252b2e;
+    position: relative;
+    perspective: 1000px; /* Set the perspective for the 3D effect */
+  }
+  
+  .gotoprofile::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(-30deg, #333, #555); /* Gradient for the 3D effect */
+    border-radius: 2rem;
+    transform: rotateY(-30deg);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Optional: Add a shadow for depth */
+  }
+}

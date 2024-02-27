@@ -6,6 +6,7 @@ import { FaImage } from "react-icons/Fa";
 import { AddFeed } from "../../Api/Api";
 import { getFeeds } from "../../store/FeedSlice.js";
 import { useDispatch } from "react-redux";
+import avtar from "../../assets/avatar.png";
 
 function postmodel({ postBox, setPostBox }) {
   const dispatch = useDispatch();
@@ -82,7 +83,7 @@ function postmodel({ postBox, setPostBox }) {
             </p>
             <section className="postdetails">
               <div className="accountdetails">
-                <p className="photo"></p> {profile?.name}
+                <img className="photo" src={avtar} /> {profile?.name}
               </div>
               <textarea
                 className="textarea"
